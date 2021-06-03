@@ -20,9 +20,14 @@ class BaseModel(tf.keras.layers.Layer):
     def call(self, inputs):
         return self.base_net(inputs)
 
+    def isTrainable(self):
+        for layer in self.base_net.layers:
+            print(layer.trainable)
+
     def fineTune(self, layers_per):
         layers = math.floor(layers_per * len(self.base_net.layers))
-        print(layers)
+        print(
+            f'Freeze {layers} out of {len(self.base_net.layers)} base layers')
 
         self.base_net.trainable = True
         for layer in self.base_net.layers[:layers]:
@@ -73,6 +78,9 @@ class Model(tf.keras.Model):
         x = self.preprocess(inputs)
         x = self.base(x)
         return self.head(x)
+
+    def isBaseTrainable(self):
+        self.base.isTrainable()
 
     def fineTune(self, layers_per):
         self.base.fineTune(layers_per)
