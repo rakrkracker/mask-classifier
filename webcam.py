@@ -72,11 +72,11 @@ def showCameraFeed(feed, model):
         frame = cv2.putText(
             frame,                      # Image
             text,                       # Text
-            (50, 50),                   # Org (origin)
+            (50, 100),                   # Org (origin)
             cv2.FONT_HERSHEY_SIMPLEX,   # Font
-            1,                          # Font scale
-            txtcolor,                # Color
-            2,                          # Thickness
+            2,                          # Font scale
+            txtcolor,                   # Color
+            4,                          # Thickness
             cv2.LINE_AA                 # Line type
         )
 
@@ -84,7 +84,7 @@ def showCameraFeed(feed, model):
             frame = cv2.putText(
                 frame,                      # Image
                 'REC',                      # Text
-                (width-100, 50),            # Org (origin)
+                (width-100, 100),            # Org (origin)
                 cv2.FONT_HERSHEY_SIMPLEX,   # Font
                 1,                          # Font scale
                 (0, 0, 255),                # Color
