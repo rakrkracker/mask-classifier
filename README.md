@@ -31,4 +31,4 @@ Then, about 20% of the last layers in the convolutional model were unfrozen (34 
 ![fine tuning curves](https://github.com/rakrkracker/mask-classifier/blob/master/images/learning_curve2.png)<br/>
 
 # Demo
-![Mask demo](https://github.com/rakrkracker/mask-classifier/blob/master/videos/cam_video.mp4)
+![Mask demo](https://github.com/rakrkracker/mask-classifier/blob/master/videos/cam_video_gif.gif)
