@@ -25,6 +25,8 @@ def showCameraFeed(feed, model):
     mask_sum = 0
     text = 'Initializing...'
 
+    file_index = 0
+
     while(True):
         # Capture frame-by-frame
         frameId = feed.get(1)  # current frame number
@@ -70,6 +72,11 @@ def showCameraFeed(feed, model):
         # cv2.imwrite('test_image2.png', frame)
 
         cv2.imshow('frame', frame)
-        if cv2.waitKey(1) & 0xFF == ord('q'):
+        keypressed = cv2.waitKey(1)
+        if keypressed == ord('q'):
             releaseCamera(feed)
             break
+        elif keypressed == ord('c'):
+            img_name = "images/snapshot_{}.png".format(file_index)
+            cv2.imwrite(img_name, frame)
+            print("{} written!".format(img_name))
