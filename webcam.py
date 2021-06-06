@@ -82,3 +82,4 @@ def showCameraFeed(feed, model):
             img_name = "images/snapshot_{}.png".format(file_index)
             cv2.imwrite(img_name, frame)
             print("{} written!".format(img_name))
+            file_index += 1
