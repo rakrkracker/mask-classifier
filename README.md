@@ -16,6 +16,7 @@ To generalize better, the images were augmented with rotation, zoom, axis shifts
 The model is based on the MobileNetV2 architecture, making it efficient and able to run in realtime on a large range of devices. It's convolutional base was loaded with the 'imagenet' weights. A dense classification head was added, in addition to a global average pool to flatten the image and a dropout layer for more stable learning.
 
 ## Training
-For the first training pass, the convolutional base was frozen. The model was trained in batches of size 32 and for 15 epochs. Then, about 20% of the last layers in the convolutional model were unfrozen (34 out of 154) and another training run was initiated to fine tune the model. The model reached on overall accuracy of 99.6% - 99.3% validation and 99.9% training (with augmented images). <br/>
+For the first training pass, the convolutional base was frozen. The model was trained in batches of size 32 and for 15 epochs.<br/>
 ![training curves](https://github.com/rakrkracker/mask-classifier/blob/master/images/learning_curve1.png)
-![fine tuning curves](https://github.com/rakrkracker/mask-classifier/blob/master/images/learning_curve2.pdf)
+Then, about 20% of the last layers in the convolutional model were unfrozen (34 out of 154) and another training run was initiated to fine tune the model. The model reached on overall accuracy of 99.6% - 99.3% validation and 99.9% training (with augmented images). <br/>
+![fine tuning curves](https://github.com/rakrkracker/mask-classifier/blob/master/images/learning_curve2.png)
