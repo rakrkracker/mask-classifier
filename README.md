@@ -29,3 +29,6 @@ For the first training pass, the convolutional base was frozen. The model was tr
 ![training curves](https://github.com/rakrkracker/mask-classifier/blob/master/images/learning_curve1.png)<br/>
 Then, about 20% of the last layers in the convolutional model were unfrozen (34 out of 154) and another training run was initiated to fine tune the model. The model reached on overall accuracy of 99.85% - 99.3% validation and 99.7% training (with augmented images). This indicated a good fit, without under- or overfitting <br/>
 ![fine tuning curves](https://github.com/rakrkracker/mask-classifier/blob/master/images/learning_curve2.png)<br/>
+
+# Demo
+[![Mask demo](https://github.com/rakrkracker/mask-classifier/blob/master/videos/cam_video.mp4)
