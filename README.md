@@ -8,6 +8,14 @@ An implementation of an efficient deep CNN, using transfer learning from the Mob
 For this project, 1,369 images of faces were used - 683 with mask and 686 without mask. The masked faces were created by [Prajna Bhandary](https://github.com/prajnasb/observations/tree/master/experiements/data). She used image augmentation to "stitch" mask graphics to images of faces.<br/>
 ![sample images](https://github.com/rakrkracker/mask-classifier/blob/master/images/faces_val.png)<br/>
 
+## Libraries used
+* TensorFlow
+* Keras
+* openCV (cv2)
+* Numpy
+* matplotlib
+* math
+
 ## Data preperation
 To generalize better, the images were augmented with rotation, zoom, axis shifts, shear and horizontal flips.
 ![augmented images](https://github.com/rakrkracker/mask-classifier/blob/master/images/faces_train.png)<br/>
