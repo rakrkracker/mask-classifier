@@ -11,9 +11,10 @@ def startCameraFeed(model):
     return feed
 
 
-def releaseCamera(feed):
+def releaseCamera(feed, videoWriter):
     # When everything done, release the capture
     feed.release()
+    videoWriter.release()
     cv2.destroyAllWindows()
 
 
@@ -21,12 +22,22 @@ def showCameraFeed(feed, model):
     frameRate = feed.get(5)  # frame rate
     frameRate = 30  # temp
 
+    # get video property
+    width = int(feed.get(3))   # Video `width`
+    height = int(feed.get(4))  # Video `height`
+    resolution = (width, height)
+
     frameNum = 0
     mask_sum = 0
     text = 'Initializing...'
     txtcolor = (0, 255, 0)
 
     file_index = 0
+
+    vid_cod = cv2.VideoWriter_fourcc(*'mp4v')
+    videoWriter = cv2.VideoWriter(
+        "videos/cam_video.mp4", vid_cod, 15.0, resolution)
+    isRec = False
 
     while(True):
         # Capture frame-by-frame
@@ -50,8 +61,8 @@ def showCameraFeed(feed, model):
         pred = tf.where(res[0] < res[1], 0, 1)
         mask_sum += pred
 
-        if frameNum % math.floor(frameRate / 2) == 0:
-            mask_avg = mask_sum / 15
+        if frameNum % math.floor(frameRate / 6) == 0:
+            mask_avg = mask_sum / 5
             frameNum = 0
             mask_sum = 0
             text = 'Mask' if mask_avg > 0.5 else 'No mask'
@@ -69,17 +80,34 @@ def showCameraFeed(feed, model):
             cv2.LINE_AA                 # Line type
         )
 
+        if isRec:
+            frame = cv2.putText(
+                frame,                      # Image
+                'REC',                      # Text
+                (width-100, 50),            # Org (origin)
+                cv2.FONT_HERSHEY_SIMPLEX,   # Font
+                1,                          # Font scale
+                (0, 0, 255),                # Color
+                2,                          # Thickness
+                cv2.LINE_AA                 # Line type
+            )
+
         # Display the resulting frame
         # cv2.imshow('frame', gray)
         # cv2.imwrite('test_image2.png', frame)
 
         cv2.imshow('frame', frame)
+        if isRec:
+            videoWriter.write(frame)
+
         keypressed = cv2.waitKey(1)
         if keypressed == ord('q'):
-            releaseCamera(feed)
+            releaseCamera(feed, videoWriter)
             break
         elif keypressed == ord('c'):
             img_name = "images/snapshot_{}.png".format(file_index)
             cv2.imwrite(img_name, frame)
             print("{} written!".format(img_name))
             file_index += 1
+        elif keypressed == ord('v'):
+            isRec = not isRec
