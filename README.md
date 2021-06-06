@@ -5,7 +5,7 @@ A deep learning computer vision algorithm that detects if a person is wearing a 
 An implementation of an efficient deep CNN that classifies whether a person is wearing a face mask via webcam in realtime.
 
 ## Dataset
-For this project, 1,369 images of faces were used - 683 with mask and 686 without mask. The masked faces were created by [Prajna Bhandary](https://github.com/prajnasb/observations/tree/master/experiements/data). She used image augmentation to "stitch" mask graphics to images faces.<br/>
+For this project, 1,369 images of faces were used - 683 with mask and 686 without mask. The masked faces were created by [Prajna Bhandary](https://github.com/prajnasb/observations/tree/master/experiements/data). She used image augmentation to "stitch" mask graphics to images of faces.<br/>
 ![sample images](https://github.com/rakrkracker/mask-classifier/blob/master/images/faces_val.png)
 
 ## Data preperation
