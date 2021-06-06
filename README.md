@@ -2,7 +2,7 @@
 A deep learning computer vision algorithm that detects if a person is wearing a face mask in real time via the webcam.
 
 ## Overview
-An implementation of an efficient deep CNN that classifies whether a person is wearing a face mask via webcam in realtime.
+An implementation of an efficient deep CNN, using transfer learning from the MobileNetV2 model, that classifies whether a person is wearing a face mask via webcam in realtime. The model was built using the TensorFlow/Keras libraries and reached an accuracy of about 99.6%.
 
 ## Dataset
 For this project, 1,369 images of faces were used - 683 with mask and 686 without mask. The masked faces were created by [Prajna Bhandary](https://github.com/prajnasb/observations/tree/master/experiements/data). She used image augmentation to "stitch" mask graphics to images of faces.<br/>
