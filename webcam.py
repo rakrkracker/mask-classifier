@@ -24,6 +24,7 @@ def showCameraFeed(feed, model):
     frameNum = 0
     mask_sum = 0
     text = 'Initializing...'
+    txtcolor = (0, 255, 0)
 
     file_index = 0
 
@@ -54,6 +55,7 @@ def showCameraFeed(feed, model):
             frameNum = 0
             mask_sum = 0
             text = 'Mask' if mask_avg > 0.5 else 'No mask'
+            txtcolor = (0, 0, 255) if mask_avg > 0.5 else (255, 0, 0)
 
         # Add text
         frame = cv2.putText(
@@ -62,7 +64,7 @@ def showCameraFeed(feed, model):
             (50, 50),                   # Org (origin)
             cv2.FONT_HERSHEY_SIMPLEX,   # Font
             1,                          # Font scale
-            (255, 0, 0),                # Color
+            txtcolor,                # Color
             2,                          # Thickness
             cv2.LINE_AA                 # Line type
         )
