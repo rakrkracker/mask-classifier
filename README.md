@@ -13,7 +13,8 @@ To generalize better, the images were augmented with rotation, zoom, axis shifts
 ![augmented images](https://github.com/rakrkracker/mask-classifier/blob/master/images/faces_train.png)<br/>
 
 ## The model
-The model is based on the MobileNetV2 architecture, making it efficient and able to run in realtime on a large range of devices. It's convolutional base was loaded with the 'imagenet' weights. A dense classification head was added, in addition to a global average pool to flatten the image and a dropout layer for more stable learning.
+The model is based on the MobileNetV2 architecture via transfer learning, making it efficient and able to run in realtime on a large range of devices. It's convolutional base was loaded with the 'imagenet' weights. A dense classification head was added, in addition to a global average pool to flatten the image and a dropout layer for more stable learning.<br/>
+![transfer model](https://github.com/rakrkracker/mask-classifier/blob/master/images/transfer_model.png)<br/>
 
 ## Training
 For the first training pass, the convolutional base was frozen. The model was trained in batches of size 32 and for 15 epochs.<br/>
